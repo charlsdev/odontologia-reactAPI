@@ -1,79 +1,81 @@
-import { useEffect } from "react";
-
+import { useEffect, useState } from "react";
 import "../assets/css/login.min.css";
+import Swal from "sweetalert2";
+
+import ModalRegister from "../components/ModalRegister";
+import FormLogin from "../components/FormLogin";
+
+const Toast = Swal.mixin({
+   toast: true,
+   position: "top-end",
+   showConfirmButton: false,
+   timer: 5000,
+   timerProgressBar: true,
+   didOpen: (toast) => {
+      toast.addEventListener("mouseenter", Swal.stopTimer);
+      toast.addEventListener("mouseleave", Swal.resumeTimer);
+   },
+});
+
+// Toast.fire({
+//    icon: "warning",
+//    title: "Los campos no pueden ir vacíos o con espacios.",
+// });
 
 function LoginPage() {
-   useEffect(() => {
-      const inputs = document.querySelectorAll('.input');
+   const [dataLogin, setDataLogin] = useState({
+      cedula: "",
+      password: "",
+   });
 
-      function addcl(){
+   const [show, setShow] = useState(false);
+
+   useEffect(() => {
+      const inputs = document.querySelectorAll(".input");
+
+      function addcl() {
          let parent = this.parentNode.parentNode;
-         parent.classList.add('focus');
+         parent.classList.add("focus");
       }
-      
-      function remcl(){
+
+      function remcl() {
          let parent = this.parentNode.parentNode;
-         if(this.value == ''){
-            parent.classList.remove('focus');
+         if (this.value == "") {
+            parent.classList.remove("focus");
          }
       }
-      
-      inputs.forEach(input => {
-         input.addEventListener('focus', addcl);
-         input.addEventListener('blur', remcl);
+
+      inputs.forEach((input) => {
+         input.addEventListener("focus", addcl);
+         input.addEventListener("blur", remcl);
       });
-   }, [])
-   
+   }, []);
 
    return (
       <>
          <img className="wave" src="/img/bck.jpg" />
-
          <div className="containerLogin">
             <div className="img">
                <img src="/img/bc.svg" />
             </div>
 
             <div className="login-content">
-               <form action="/login" method="POST">
-                  <img src="/img/dental.png" />
-                  <h2 className="title">Bienvenido</h2>
-
-                  <div className="input-div one">
-                     <div className="i">
-                        <i className="fas fa-user"></i>
-                     </div>
-                     <div className="div">
-                        <h5>Cédula</h5>
-                        <input
-                           type="text"
-                           className="input"
-                           id="username"
-                           name="cedula"
-                        />
-                     </div>
-                  </div>
-                  <div className="input-div pass">
-                     <div className="i">
-                        <i className="fas fa-lock"></i>
-                     </div>
-                     <div className="div">
-                        <h5>Contraseña</h5>
-                        <input
-                           type="password"
-                           className="input"
-                           id="password"
-                           name="password"
-                        />
-                     </div>
-                  </div>
-                  <div className="link">
-                     No tienes una cuenta? ¡Registrate!
-                  </div>
-                  <input type="submit" className="btnLogin" value="Login" />
-               </form>
+               <FormLogin
+                  dataLogin={dataLogin}
+                  setDataLogin={setDataLogin}
+                  setShow={setShow}
+                  Swal={Swal}
+                  Toast={Toast}
+               />
             </div>
          </div>
+
+         <ModalRegister
+            show={show}
+            setShow={setShow}
+            Swal={Swal}
+            Toast={Toast}
+         />
       </>
    );
 }

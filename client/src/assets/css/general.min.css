@@ -7,6 +7,56 @@
 }
 
 body {
-   /* background: #111; */
    font-family: 'PT Sans', sans-serif !important;
+}
+
+.swal2-title {
+   padding: 0 1em 0 !important;
+}
+
+.swal2-html-container {
+   margin: 0.3em 1.6em 0.3em !important;
+}
+
+.swal2-html-container p {
+   margin-bottom: 0 !important;
+}
+
+.swal2-actions {
+   margin: 0.5em auto 0 !important;
+}
+
+.btnGeneral {
+   padding: 2px 25px;
+   font-weight: 600;
+   text-transform: uppercase;
+   font-size: .8rem;
+}
+
+.header__modal {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.header__modal .tittle__modal {
+   font-weight: 600;
+   font-size: 1.3rem;
+}
+
+.body__modal label {
+   font-size: .9rem;
+   font-weight: 600;
+   text-transform: uppercase;
+   margin-left: 10px;
+}
+
+.body__modal input,
+.body__modal select {
+   font-size: .85rem;
+}
+
+.footer__modal {
+   display: flex;
+   justify-content: space-between;
 }

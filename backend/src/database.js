@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
-import { MONGO_URL } from './envCnf.js';
+
+const MONGO_URL = process.env.MONGO_URL;
 
 mongoose.connect(MONGO_URL)
    .then((db) => 

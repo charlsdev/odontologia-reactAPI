@@ -9,6 +9,7 @@
    align-items: center;
    min-height: 100vh;
    background: #000000a0;
+   z-index: 1080;
 }
 
 .loader {

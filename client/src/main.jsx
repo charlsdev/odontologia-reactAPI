@@ -7,13 +7,14 @@ import Loader from "./components/Loader";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/barra.min.css";
 import "./assets/css/general.min.css";
+import "./assets/css/toastJS.min.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-   //<Suspense fallback={<Loader />}>
+   <Suspense fallback={<Loader />}>
       <React.StrictMode>
          <BrowserRouter>
             <App />
          </BrowserRouter>
       </React.StrictMode>
-   //</Suspense>
+   </Suspense>
 );

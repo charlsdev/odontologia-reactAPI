@@ -17,11 +17,6 @@ const Toast = Swal.mixin({
    },
 });
 
-// Toast.fire({
-//    icon: "warning",
-//    title: "Los campos no pueden ir vacíos o con espacios.",
-// });
-
 function LoginPage() {
    const [dataLogin, setDataLogin] = useState({
       cedula: "",

@@ -1,7 +1,9 @@
-import { Schema, model } from 'mongoose';
-import { genSalt, hash, compare } from 'bcryptjs';
+import mongoose from 'mongoose';
+const { Schema, model } = mongoose;
+import bcryptjs from 'bcryptjs';
+const { genSalt, hash, compare } = bcryptjs;
 
-const usersSchema = new Schema ({
+const usersSchema = new Schema({
    cedula: {
       type: String,
       required: true,
@@ -44,12 +46,12 @@ const usersSchema = new Schema ({
    versionKey: false
 });
 
-usersSchema.statics.encryptPassword = async password => {
+usersSchema.methods.encryptPassword = async password => {
    const salt = await genSalt(10);
    return await hash(password, salt);
 };
 
-usersSchema.statics.matchPassword = async function(password) {
+usersSchema.methods.matchPassword = async function(password) {
    return await compare(password, this.password);
 };
 

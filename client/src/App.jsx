@@ -1,24 +1,13 @@
-import { useState } from "react";
-// import Loader from "./components/Loader";
 import LoginPage from "./pages/LoginPage";
+import { LoaderContextProvider } from "./context/LoaderContext";
 
 function App() {
-   // const [loading, setLoading] = useState(true);
-
    return (
-      // <>
-      //    {loading ? (
-      //       <Loader />
-      //    ) : (
-      //       <>
-
-      //       </>
-      //    )}
-      // </>
-
-      <div className="App">
-         <LoginPage />
-      </div>
+      <LoaderContextProvider>
+         <div className="App">
+            <LoginPage />
+         </div>
+      </LoaderContextProvider>
    );
 }
 
